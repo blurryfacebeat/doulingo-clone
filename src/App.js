@@ -6,7 +6,7 @@ import questions from './questions.json';
 function App() {
   const [sentence, setSentence] = useState(questions[0].sentence);
   const [blocks, setBlocks] = useState(questions[0].blocks);
-  const [useBlocks, setUseBlocks] = useState([]);
+  const [useBlocks, setUseBlocks] = useState([{id: 1, text: 'Hello'}, {id: 2, text: 'World!!!'}]);
 
   useEffect(() => {
     console.log(sentence);
@@ -27,10 +27,31 @@ function App() {
               {s.text}
             </span>
           ))}
-
         </div>
       </div>
-      <pre>{}</pre>
+      <div className="answer-container">
+        <div className="use-blocks">
+          {useBlocks.map(u => (
+            <div
+              key={u.id}
+              className="use-blocks-item"
+            >
+              {u.text}
+            </div>
+          ))}
+        </div>
+        <div className="block-container">
+          {blocks.map(b => (
+            <div
+              key={b.id}
+              className="block-item"
+            >
+              {b.text}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="check-button">Проверить</div>
     </div>
   );
 }
